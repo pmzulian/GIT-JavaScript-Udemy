@@ -1,3 +1,6 @@
+// Ir del caso más general, el truthy al más específico, el falsy
+// Para cada if anidado, abrir un nuevo describe()
+
 describe('setFrontVideo', () => {
   beforeEach(() => {
     // Mock de la función a evaluar su llamada

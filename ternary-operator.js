@@ -25,8 +25,16 @@
 // console.log("" && -0);
 
 // Comparison with ternary operator
-let modsAdded = 0;
-const isSubSection = true;
-console.log("isSubSection: ", isSubSection ? 1 : 0);
-console.log(modsAdded === (isSubSection ? 1 : 0) ? 'undef' : true);
-console.log(modsAdded === 1 ? 'undef' : true);
+// let modsAdded = 0;
+// const isSubSection = true;
+// console.log("isSubSection: ", isSubSection ? 1 : 0);
+// console.log(modsAdded === (isSubSection ? 1 : 0) ? 'undef' : true);
+// console.log(modsAdded === 1 ? 'undef' : true);
+
+// New feature
+// Slice permite valores negativos para contar desde el final
+const someArray = ['uno', 'dos', 'tres', 'cuatro'];
+const something = someArray.slice(-2)[0];
+console.log(something);
+// At permite acceder al índice desde el final, con valores negativos
+// console.log(someArray.at(-2));

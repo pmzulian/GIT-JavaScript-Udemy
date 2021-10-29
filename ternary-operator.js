@@ -15,14 +15,11 @@
 // } else {
 //   drink2 = 'Water';
 // }
-
+//
 // console.log(drink2);
 
 //Ternary operator within string templates
-// console.log(`I like drink ${age >= 18 ? "Wine" : "Water"}`);
-
-// const num = '10,2';
-// console.log("" && -0);
+console.log(`I like drink ${age >= 18 ? "Wine" : "Water"}`);
 
 // Comparison with ternary operator
 // let modsAdded = 0;
@@ -30,11 +27,3 @@
 // console.log("isSubSection: ", isSubSection ? 1 : 0);
 // console.log(modsAdded === (isSubSection ? 1 : 0) ? 'undef' : true);
 // console.log(modsAdded === 1 ? 'undef' : true);
-
-// New feature
-// Slice permite valores negativos para contar desde el final
-const someArray = ['uno', 'dos', 'tres', 'cuatro'];
-const something = someArray.slice(-2)[0];
-console.log(something);
-// At permite acceder al índice desde el final, con valores negativos
-// console.log(someArray.at(-2));

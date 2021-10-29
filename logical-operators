@@ -4,13 +4,3 @@ const hasGoodVision = false;
 
 console.log(hasDriversLicence && hasGoodVision);
 console.log(hasDriversLicence || hasGoodVision);
-
-//Arrays with Arrays
-const array = [
-  ['a', 'b', 'c'],
-  ['d', 'e', 'f']
-];
-console.log(array[0][0]); // a
-console.log(array[0][2]); // c
-console.log(array[1][1]); // d
-console.log(array[1][2]); // f

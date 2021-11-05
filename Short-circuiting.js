@@ -15,3 +15,4 @@ console.log(0 && 'String');
 console.log('String' && null);
 console.log(true && 0);
 console.log(undefined && null);
+console.log('Hello' && 30 && null && 'Globant');

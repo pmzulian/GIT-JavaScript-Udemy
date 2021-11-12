@@ -60,8 +60,8 @@ for (const day of days) {
 
 // Arrays wiht Optional Chaining
 const users = [
-  // {name: 'Mario BROS', email: 'mario@bros.com'},
-  // {name: 'Luigi BROS', email: 'luigi@bros.com'}
+  {name: 'Mario BROS', email: 'mario@bros.com'},
+  {name: 'Luigi BROS', email: 'luigi@bros.com'}
 ];
 
 console.log(users[0]?.name ?? 'User array is empty');

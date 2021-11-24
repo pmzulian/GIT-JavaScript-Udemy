@@ -6,12 +6,20 @@ const Person = function(firstName, birthYear) {
   this.firstName = firstName;
   this.birthYear = birthYear;
   // Never do this
-  this.calcAge = function() {
+  /*this.calcAge = function() {
     console.log(2021 - this.birthYear);
-  }
+  }*/
 };
 
-const persona = new Person('John', 1990);
-console.log(persona)
+const globant = new Person('John', 1990);
+// console.log(persona)
 
-console.log(persona instanceof Person);
+// console.log(persona instanceof Person);
+
+// Prototypes
+Person.prototype.calcAge = function() {
+  console.log(2021 - this.birthYear);
+}
+// console.log(Person.prototype);
+
+globant.calcAge();

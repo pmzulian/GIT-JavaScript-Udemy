@@ -49,10 +49,42 @@ Person.prototype.species = 'Homo Sapiens';
 // console.log(globant.__proto__.__proto__.__proto__);
 
 // Prototype of a function
-console.log(Person.prototype.constructor);
+// console.log(Person.prototype.constructor);
 
 // Prototype of an array
-const arr = [3, 6, 8, 10];
+const arr = [2, 2, 3, 3, 4, 4, 5, 5];
 // console.log(arr.__proto__);
 // console.log(arr.__proto__ === Array.prototype);
-console.log(arr.__proto__.__proto__);
+// console.log(arr.__proto__.__proto__);
+
+// Add methos wich returns the unique elements of an Array
+Array.prototype.unique = function() {
+  return [...new Set(this)];
+}
+
+// console.log(arr.unique());
+
+// DOM prototype
+const h1 = document.querySelector('h1');
+// console.dir(h1)
+
+// Functions prototype
+console.dir(x => x + 1);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Fin archivo

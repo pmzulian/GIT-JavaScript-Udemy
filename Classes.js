@@ -33,6 +33,6 @@ PersonCl.prototype.greet = function () {
 
 jessica.greet();
 
-console.log('Mensaje conflicto con stash');
+console.log('Este cambio es desde Lenovo');
 
 //Fin del archivo

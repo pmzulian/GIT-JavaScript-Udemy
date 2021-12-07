@@ -33,5 +33,4 @@ PersonCl.prototype.greet = function () {
 
 jessica.greet();
 
-
 //Fin del archivo

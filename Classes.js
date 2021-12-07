@@ -33,6 +33,5 @@ PersonCl.prototype.greet = function () {
 
 jessica.greet();
 
-console.log('Este cambio es desde Lenovo');
 
 //Fin del archivo

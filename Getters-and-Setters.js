@@ -28,8 +28,8 @@ const lastAt = frutas.at(-1);
 
 // Getters and Setters en Clases
 class PersonCl {
-  constructor(firstName, birthYear) {
-    this.firstName = firstName;
+  constructor(fullName, birthYear) {
+    this.fullName = fullName;
     this.birthYear = birthYear;
   };
 
@@ -41,11 +41,22 @@ class PersonCl {
   get age() {
     return 2021 - this.birthYear;
   };
+
+  // Set a property already exists
+  set fullName(name) {
+    console.log(name);
+    if(name.includes(' ')) this._fullName = name;
+    else alert(`${name} is not a full name`)
+  };
+
+  get fullName() {
+    return this._fullName;
+  };
 };
 
-const jessica = new PersonCl('Jessica', 1990);
-// console.log(jessica.age);
-console.log(jessica.__proto__);
+const evelyn = new PersonCl('Evelyn WAUGH', 1990);
+console.log(evelyn);
+// console.log(evelyn.__proto__);
 
 
 

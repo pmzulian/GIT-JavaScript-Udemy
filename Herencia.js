@@ -102,7 +102,17 @@ const peter = new StudentCl('Peter Parker', 1990, 'Computer Science');
 peter.introduce();
 peter.calcAge();
 
+// Contexto funciones arrow
+// Object.prototype.frase = 'Hola mundo';
+const obj = {
+  frase: 'Hola mundo',
+  saludar: () => console.log(this.frase)
+};
 
+const myThis = {
+  frase: 'Desde contexto con call'
+}
+obj.saludar.call(myThis);
 
 
 

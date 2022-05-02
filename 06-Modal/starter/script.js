@@ -7,14 +7,23 @@ const btnCloseModal = document.querySelector('.close-modal');
 const btnsOpenModal = document.querySelectorAll('.show-modal');
 console.log(btnsOpenModal);
 
-for (let i = 0; i < btnsOpenModal.length; i++)
-  btnsOpenModal[i].addEventListener('click', function() {
-      console.log('Button clicked');
-      modal.classList.remove('hidden');
-      overlay.classList.remove('hidden');
-  });
+const openModal = function () {
+  console.log('Button clicked');
+  modal.classList.remove('hidden');
+  overlay.classList.remove('hidden');
+};
 
-btnCloseModal.addEventListener('click', () => {
+const closeModal = function () {
   modal.classList.add('hidden');
   overlay.classList.add('hidden');
-});
+};
+
+// Segundo paso: añadir eventos a los botones
+for (let i = 0; i < btnsOpenModal.length; i++)
+  btnsOpenModal[i].addEventListener('click', openModal);
+
+// Tercer paso: añadir evento a botones de cerrar ventana modal
+btnCloseModal.addEventListener('click', closeModal);
+
+// Cuarto paso: ejecutar cierre cuando hacemos click fuera
+overlay.addEventListener('click', closeModal);

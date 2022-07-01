@@ -22,6 +22,15 @@ const scores = [0, 0];
 let currentScore = 0;
 let activePlayer = 0;
 
+// Switch to the next player
+const swtichPlayer = function() {
+  document.getElementById(`current--${activePlayer}`).textContent = 0;
+  currentScore = 0;
+  activePlayer = activePlayer === 0 ? 1 : 0;
+  player0El.classList.toggle('player--active');
+  player1El.classList.toggle('player--active');
+}
+
 // Rolling Dice functionality
 buttonRoll.addEventListener('click', function() {
   //1. Generating a random dice Roll
@@ -38,10 +47,26 @@ buttonRoll.addEventListener('click', function() {
     document.getElementById(`current--${activePlayer}`).textContent = currentScore;
   } else {
     // Switch to the next player
-    document.getElementById(`current--${activePlayer}`).textContent = 0;
-    currentScore = 0;
-    activePlayer = activePlayer === 0 ? 1 : 0;
-    player0El.classList.toggle('player--active');
-    player1El.classList.toggle('player--active');
+    swtichPlayer();
   }
+});
+
+buttonHold.addEventListener('click', function () {
+
+  // 1. Add current score to active player's scores
+  scores[activePlayer] += currentScore;
+  // scores[1] = scores[1] + currentScore
+  document.getElementById(`score--${activePlayer}`).textContent =
+scores[activePlayer];
+
+  // 2. Check if player's score is >= 100
+  //Finish the Game
+  if(scores[activePlayer] >= 20) {
+    document.querySelector(`player--${activePlayer}`).classList.add('player--winner');
+    document.querySelector(`player--${activePlayer}`).classList.remove('player--active');
+  } else {
+    // Switch to the next player
+    swtichPlayer();
+  }
+
 });

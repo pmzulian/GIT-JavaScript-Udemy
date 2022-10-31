@@ -82,9 +82,9 @@ const getCountryAndNeighbour = function (country) {
   });
 };
 
-getCountryAndNeighbour('turkey');
+// getCountryAndNeighbour('turkey');
 
-setTimeout(() => {
+/* setTimeout(() => {
   console.log('One second passed');
 
   setTimeout(() => {
@@ -101,4 +101,7 @@ setTimeout(() => {
   
   }, 1000);
 
-}, 1000);
+}, 1000); */
+
+const request = fetch('https://restcountries.com/v2/name/belarus');
+console.log(request);

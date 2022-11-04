@@ -117,6 +117,15 @@ const getCountryAndNeighbour = function (country) {
     })
 }; */
 
+/* const getCountryData = function(country) {
+  fetch(`https://restcountries.com/v2/name/${country}`)
+    .then(response => response.json())
+    .then(data => renderCountry(data[0]))
+}; */
+
+// getCountryData('latvia');
+
+// Chaining Promises
 const getCountryData = function(country) {
   fetch(`https://restcountries.com/v2/name/${country}`)
     .then(response => response.json())

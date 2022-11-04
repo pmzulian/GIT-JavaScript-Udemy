@@ -120,7 +120,38 @@ const getCountryAndNeighbour = function (country) {
 const getCountryData = function(country) {
   fetch(`https://restcountries.com/v2/name/${country}`)
     .then(response => response.json())
-    .then(data => renderCountry(data[0]))
+    .then(data => {
+      renderCountry(data[0])
+      const neighbour = data[0].borders?.[0];
+      console.log(fetch(`https://restcountries.com/v2/alpha/${neighbour}`));
+      return fetch(`https://restcountries.com/v2/alpha/${neighbour}`);
+    })
+    .then(response => response.json())
+    .then(data => {renderCountry(data, 'neighbour'); console.log(data)})
 };
 
-getCountryData('latvia');
+// getCountryData('latvia');
+
+// For more than two neighbour countries
+const getCountryAndAllNeighbours = function(country) {
+  fetch(`https://restcountries.com/v2/name/${country}`)
+  .then(response => response.json())
+  .then(data => {
+    renderCountry(data[0])
+
+    const neighbours = data[0].borders;
+    console.log(neighbours);
+    
+    const promises = neighbours.map(element => {
+      return fetch(`https://restcountries.com/v2/alpha/${element}`)
+    })
+    console.log('Promises' , promises )
+    for (const iterator of promises) {
+      iterator
+      .then(response => response.json())
+      .then(data => renderCountry(data, 'neighbour'))
+    }
+  })
+};
+
+getCountryAndAllNeighbours('switzerland');

@@ -148,7 +148,7 @@ const getCountryData = function(country) {
     .then(data => {renderCountry(data, 'neighbour'); console.log(data)})
     .catch(err => {
       console.error(err + '💥💥💥💥');
-      renderError(`Something went wrong 💥💥 ${err}`)
+      renderError(`Something went wrong 💥💥 ${err.message}`)
     })
 };
 

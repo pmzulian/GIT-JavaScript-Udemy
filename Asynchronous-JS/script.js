@@ -209,7 +209,7 @@ btn.addEventListener('click', function() {
 });
 
 // Country does not exist
-getCountryData('australia');
+// getCountryData('australia');
 
 // For more than two neighbour countries
 const getCountryAndAllNeighbours = function(country) {
@@ -234,3 +234,15 @@ const getCountryAndAllNeighbours = function(country) {
 };
 
 // getCountryAndAllNeighbours('switzerland');
+
+// Event Loop in practice
+console.log('Test start');
+setTimeout(() => console.log('0 seconds timer'), 0);
+Promise.resolve('Resolved promise 1').then(res => console.log(res));
+
+Promise.resolve('Resolved promise 2').then(res => {
+  for (let i = 0; i < 1000000000; i++){}
+  console.log(res);
+});
+
+console.log('Test end');

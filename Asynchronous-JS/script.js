@@ -264,3 +264,26 @@ const lotteryPromise = new Promise(function(resolve, reject) {
 lotteryPromise
   .then(res => console.log(res))
   .catch(err => console.error(err))
+
+// Promisifying setTimeOut
+const wait = function(seconds) {
+  return new Promise(function(resolve) {
+    setTimeout(resolve, seconds * 1000);
+  });
+};
+
+wait(2)
+  .then(() => {
+    console.log('Wait for 2 seconds');
+    return wait(3);
+  })
+  .then(() => {
+    console.log('Wait for 3 seconds');
+    return wait(4);
+  })
+  .then(() => {
+    console.log('Wait for 4 seconds');
+  });
+
+Promise.resolve('Resolved inmeditly').then(x => console.log(x));
+Promise.reject(new Error ('Rejected inmeditly')).catch(x => console.error(x));

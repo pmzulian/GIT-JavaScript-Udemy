@@ -285,5 +285,5 @@ wait(2)
     console.log('Wait for 4 seconds');
   });
 
-Promise.resolve('Resolved inmeditly').then(x => console.log(x));
-Promise.reject(new Error ('Rejected inmeditly')).catch(x => console.error(x));
+Promise.resolve('Resolved immediately').then(x => console.log(x));
+Promise.reject(new Error ('Rejected immediately')).catch(x => console.error(x));

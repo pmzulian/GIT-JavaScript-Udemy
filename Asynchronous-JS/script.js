@@ -319,7 +319,7 @@ const whereAmI = function () {
 
   getPosition()
     .then(pos => {
-      console.log(pos.coords);
+      const {latitude, longitud} = pos.coords;
     })
 
   fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`)

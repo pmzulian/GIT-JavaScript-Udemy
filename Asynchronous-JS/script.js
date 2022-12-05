@@ -204,9 +204,9 @@ const getCountryData = function(country) {
     })
 };
 
-btn.addEventListener('click', function() {
+/* btn.addEventListener('click', function() {
   getCountryData('latvia');
-});
+}); */
 
 // Country does not exist
 // getCountryData('australia');
@@ -265,6 +265,11 @@ lotteryPromise
   .then(res => console.log(res))
   .catch(err => console.error(err)) */
 
+/* const promise = new Promise(function(resolve, reject) {
+  console.log('Lottery draw is happening');
+});
+console.log(promise); */
+
 // Promisifying setTimeOut
 /* const wait = function(seconds) {
   return new Promise(function(resolve) {
@@ -306,11 +311,17 @@ const getPosition = function() {
   })
 };
 
-getPosition()
+/* getPosition()
 .then(pos => console.log(pos))
-.catch(err => console.error(err))
+.catch(err => console.error(err)) */
 
-const whereAmI = function (lat, lng) {
+const whereAmI = function () {
+
+  getPosition()
+    .then(pos => {
+      console.log(pos.coords);
+    })
+
   fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`)
     .then(res => {
       if (!res.ok) throw new Error(`Problem with geocoding ${res.status}`);
@@ -328,3 +339,6 @@ const whereAmI = function (lat, lng) {
     .then(data => renderCountry(data[0]))
     .catch(err => console.error(`${err.message} 💥`));
 };
+
+btn.addEventListener('click', whereAmI);
+ 

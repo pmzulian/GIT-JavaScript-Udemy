@@ -319,10 +319,12 @@ const whereAmI = function () {
 
   getPosition()
     .then(pos => {
-      const {latitude, longitud} = pos.coords;
-    })
+      const { latitude: lat, longitude: lng } = pos.coords;
+      console.log(`Coords from getPosition: ${lat}, ${lng}`);
 
-  fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`)
+      return fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`)
+      // return fetch(`https://api.bigdatacloud.net/data/reverse-geocode?latitude=${lat}&longitude=${lng}`);
+    })
     .then(res => {
       if (!res.ok) throw new Error(`Problem with geocoding ${res.status}`);
       return res.json();
@@ -341,4 +343,3 @@ const whereAmI = function () {
 };
 
 btn.addEventListener('click', whereAmI);
- 

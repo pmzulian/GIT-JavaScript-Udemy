@@ -299,7 +299,7 @@ wait(2)
   err => console.error(err)
 ); */
 
-console.log('Getting position');
+// console.log('Getting position');
 
 const getPosition = function() {
   return new Promise(function(resolve, reject) {
@@ -315,7 +315,7 @@ const getPosition = function() {
 .then(pos => console.log(pos))
 .catch(err => console.error(err)) */
 
-const whereAmI = function () {
+/* const whereAmI = function () {
 
   getPosition()
     .then(pos => {
@@ -342,4 +342,12 @@ const whereAmI = function () {
     .catch(err => console.error(`${err.message} 💥`));
 };
 
-btn.addEventListener('click', whereAmI);
+btn.addEventListener('click', whereAmI); */
+
+// Async - Await
+const whereAmI = async function(country) {
+  const res = await fetch(`https://restcountries.eu/rest/v2/name/${country}`);
+  console.log(res);
+};
+whereAmI('argentina');
+console.log('First line');

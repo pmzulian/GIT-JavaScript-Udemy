@@ -346,8 +346,26 @@ btn.addEventListener('click', whereAmI); */
 
 // Async - Await
 const whereAmI = async function(country) {
-  const res = await fetch(`https://restcountries.eu/rest/v2/name/${country}`);
-  console.log(res);
+
+  // Geolocation
+  const pos = await getPosition();
+  const { latitude: lat, longitude: lng } = pos.coords;
+
+  // Reverse geocoding
+  const resGeo = await fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`)
+  const dataGeo = await resGeo.json();
+  console.log(dataGeo);
+
+  // Conuntry data
+  // fetch(`https://restcountries.eu/rest/v2/name/${country}`)
+  //   .then(res => console.log(res));
+
+  const res = await fetch(`https://restcountries.eu/rest/v2/name/${dataGeo.country}`);
+  const data= await res.json();
+  console.log(data);
+  renderCountry(data[0]);
 };
-whereAmI('argentina');
+
+
+whereAmI();
 console.log('First line');

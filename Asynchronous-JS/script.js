@@ -432,7 +432,7 @@ get3Countries('netherlands', 'switzerland', 'sweden'); */
   console.log(res[0]);
 })(); */
 
-const timeout = function(seconds) {
+/* const timeout = function(seconds) {
   return new Promise(function(_, reject) {
     setTimeout(function() {
       reject(new Error('Request took to long'));
@@ -445,4 +445,27 @@ Promise.race([
   timeout(1)
 ])
   .then(res => console.log(res[0]))
-  .catch(err => console.error(err))
+  .catch(err => console.error(err)); */
+
+// Promise.allSettled
+Promise.allSettled([
+  Promise.resolve('Success'),
+  Promise.reject('Error'),
+  Promise.resolve('Another success')
+])
+  .then(res => console.log(res));
+
+Promise.all([
+  Promise.resolve('Success'),
+  Promise.reject('Error from rejected promise'),
+  Promise.resolve('Another success')
+])
+  .then(res => console.log(res));
+
+// Promise.any
+Promise.any([
+  Promise.resolve('Success'),
+  Promise.reject('Error from rejected promise'),
+  Promise.resolve('Another success')
+])
+  .then(res => console.log(res));

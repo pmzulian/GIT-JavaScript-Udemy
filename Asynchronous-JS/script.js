@@ -333,7 +333,7 @@ const getPosition = function() {
     .then(data => {
       console.log(data);
       console.log(`You are in ${data.city}, ${data.country}`);
-      return fetch(`https://restcountries.eu/rest/v2/name/${data.country}`);
+      return fetch(`https://restcountries.com/v2/name/${data.country}`);
     })
     .then(res => {
       if (!res.ok) throw new Error(`Country not found (${res.status})`);
@@ -360,10 +360,10 @@ const whereAmI = async function(country) {
     // console.log(dataGeo);
 
     // Conuntry data
-    // fetch(`https://restcountries.eu/rest/v2/name/${country}`)
+    // fetch(`https://restcountries.com/v2/name/${country}`)
     //   .then(res => console.log(res));
 
-    const res = await fetch(`https://restcountries.eu/rest/v2/name/${dataGeo.country}`);
+    const res = await fetch(`https://restcountries.com/v2/name/${dataGeo.country}`);
     if(!res.ok) throw new Error('Problema getting country');
 
     const data= await res.json();
@@ -388,7 +388,7 @@ const whereAmI = async function(country) {
   .catch(err => console.error(`2: ${err.message} 💥💥`))
   .finally(() => console.log('3: Finished getting location')); */
 
-(async function() {
+/* (async function() {
   console.log('1: Will get location');
   try {
     const city = await whereAmI();
@@ -398,3 +398,51 @@ const whereAmI = async function(country) {
   } 
   console.log('3: Finished getting location');
 })();
+ */
+
+// Running promises in parallel
+/* const get3Countries = async function(c1, c2, c3) {
+  try {
+    //  const [data1] = await getJSON(`https://restcountries.com/v2/name/${c1}`);
+    //  const [data2] = await getJSON(`https://restcountries.com/v2/name/${c2}`);
+    //  const [data3] = await getJSON(`https://restcountries.com/v2/name/${c3}`);
+
+     const data = await Promise.all([
+      getJSON(`https://restcountries.com/v2/name/${c1}`),
+      getJSON(`https://restcountries.com/v2/name/${c2}`),
+      getJSON(`https://restcountries.com/v2/name/${c3}`)
+     ]);
+
+     console.log(data.map(country => country[0].capital));
+     
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+get3Countries('netherlands', 'switzerland', 'sweden'); */
+
+// Promise.race()
+/* (async function() {
+  const res = await Promise.race([
+    getJSON(`https://restcountries.com/v2/name/poland`),
+    getJSON(`https://restcountries.com/v2/name/brazil`),
+    getJSON(`https://restcountries.com/v2/name/peru`)
+]);
+  console.log(res[0]);
+})(); */
+
+const timeout = function(seconds) {
+  return new Promise(function(_, reject) {
+    setTimeout(function() {
+      reject(new Error('Request took to long'));
+    }, seconds * 1000)
+  })
+}
+
+Promise.race([
+  getJSON(`https://restcountries.com/v2/name/bhutan`),
+  timeout(1)
+])
+  .then(res => console.log(res[0]))
+  .catch(err => console.error(err))
